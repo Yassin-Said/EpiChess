@@ -5,7 +5,7 @@
 ** Queen
 */
 
-#include "Queen.hpp"
+#include "pieces/Queen.hpp"
 
 EChess::Queen::Queen(Color color, int x, int y) : APiece(color, x, y)
 {

@@ -8,25 +8,25 @@
 #ifndef APIECE_HPP_
 #define APIECE_HPP_
 
-enum Color {
-    White,
-    Black
-};
-
-
+#include "IPiece.hpp"
 
 namespace EChess
 {
-    class APiece {
+    class APiece : public IPiece {
         public:
             APiece(Color color, int x, int y);
             ~APiece();
+            virtual void move(std::vector<int>) override;
+            virtual Color getColor() override;
+            virtual Type getType() override;
+            virtual int getNbMovements() override;
 
         protected:
             int _x;
             int _y;
             Color _color;
-            int mvts = 0;
+            int _mvts = 0;
+            Type _type;
         private:
     };
 } // namespace Echess

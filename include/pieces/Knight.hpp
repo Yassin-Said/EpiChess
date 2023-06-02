@@ -14,9 +14,9 @@ namespace EChess
 {
     class Knight : public APiece{
         public:
-            Knight::Knight(Color color, int x, int y);
+            Knight(Color color, int x, int y);
             ~Knight();
-
+            std::vector<std::tuple<int, int>> getMovements(Chessboard *chessboard);
         protected:
         private:
     };

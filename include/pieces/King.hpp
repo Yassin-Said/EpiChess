@@ -14,11 +14,13 @@ namespace EChess
 {
     class King : public APiece{
         public:
-            King::King(Color color, int x, int y);
+            King(Color color, int x, int y);
             ~King();
-
+            std::vector<std::tuple<int, int>> getMovements(Chessboard *chessboard);
+            void setCheck();
         protected:
         private:
+            bool _check = false;
     };
 }
 

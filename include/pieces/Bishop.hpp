@@ -14,12 +14,15 @@ namespace EChess
 {
     class Bishop : public APiece{
         public:
-            Bishop::Bishop(Color color, int x, int y);
+            Bishop(Color color, int x, int y);
+            virtual std::vector<std::tuple<int, int>> getMovements(Chessboard *chessboard) override;
             ~Bishop();
 
         protected:
         private:
     };
 }
+
+#endif
 
 /* !BISHOP_HPP_ */

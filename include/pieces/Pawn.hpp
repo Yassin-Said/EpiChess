@@ -14,9 +14,9 @@ namespace EChess
 {
     class Pawn : public APiece{
         public:
-            Pawn::Pawn(Color color, int x, int y);
+            Pawn(Color color, int x, int y);
             ~Pawn();
-
+            std::vector<std::tuple<int, int>> getMovements(Chessboard *chessboard);
         protected:
         private:
     };

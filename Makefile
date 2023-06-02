@@ -5,24 +5,24 @@
 ## NanoTekSpice Makefile
 ##
 
-SRC = $(wildcard ./src/*.cpp) \
+SRC = $(wildcard ./src/*.cpp ./src/pieces/*.cpp) \
 			main.cpp
 
 OBJ =  $(SRC:.cpp=.o)
 
 IFLAGS = -I./include
 
-CXXFLAGS += -std=c++20 -fpic -Wall -Wextra -Werror
+CXXFLAGS += -std=c++20 -fpic -Wall -Wextra -Werror $(IFLAGS)
 
 NAME = EpiChess
 
 CC = g++
 CXX = g++
 
-all: $(ANME)
+all: $(NAME)
 
 $(NAME): $(OBJ)
-	g++ -o $(NAME) $(CXXFLAGS) $(IFLAGS)
+	g++ -o $(NAME) $(OBJ) $(CXXFLAGS)
 
 clean:
 	rm -f $(OBJ)

@@ -14,7 +14,7 @@ namespace EChess
 {
     class Queen : public APiece{
         public:
-            Queen::Queen(Color color, int x, int y);
+            Queen(Color color, int x, int y);
             ~Queen();
 
         protected:
