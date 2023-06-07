@@ -14,9 +14,9 @@ namespace EChess
 {
     class Tower : public APiece{
         public:
-            Tower::Tower(Color color, int x, int y);
+            Tower(Color color, int x, int y);
             ~Tower();
-
+            std::vector<std::tuple<int, int>> getMovements(Chessboard* chessboard);
         protected:
         private:
     };

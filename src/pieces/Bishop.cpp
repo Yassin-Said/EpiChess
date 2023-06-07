@@ -7,6 +7,7 @@
 
 #include "pieces/Bishop.hpp"
 #include "pieces/King.hpp"
+#include <iostream>
 
 EChess::Bishop::Bishop(Color color, int x, int y) : APiece(color, x, y)
 {
@@ -25,8 +26,8 @@ std::vector<std::tuple<int, int>> EChess::Bishop::getMovements(Chessboard *chess
         int temp_y = _y + dir.at(i).at(1);
         while (chessboard->inRange(temp_x, temp_y) && !chessboard->getMap().at(temp_x).at(temp_y)) {
             res.push_back(std::make_tuple(temp_x, temp_y));
-            temp_x = _x + dir.at(i).at(0);
-            temp_y = _y + dir.at(i).at(1);
+            temp_x += dir.at(i).at(0);
+            temp_y += dir.at(i).at(1);
         }
         if (chessboard->inRange(temp_x, temp_y) && chessboard->getMap().at(temp_x).at(temp_y)->getColor() != _color) {
             if (chessboard->getMap().at(temp_x).at(temp_y)->getType() == ::King) {

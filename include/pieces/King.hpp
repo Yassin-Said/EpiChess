@@ -18,6 +18,7 @@ namespace EChess
             ~King();
             std::vector<std::tuple<int, int>> getMovements(Chessboard *chessboard);
             void setCheck();
+            bool inCheck();
         protected:
         private:
             bool _check = false;

@@ -15,10 +15,12 @@ namespace EChess
     class IPiece;
     class Chessboard {
         public:
-            Chessboard() = default;
+            Chessboard();
             ~Chessboard() = default;
             void displayBoard();
             std::vector<std::vector<IPiece *>> getMap();
+            void setMap(std::vector<std::vector<IPiece *>>);
+            void addPiece(IPiece *);
             bool inRange(int, int);
         private:
             std::vector<std::vector<IPiece *>> _map;

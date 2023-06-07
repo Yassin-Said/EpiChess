@@ -16,10 +16,13 @@ namespace EChess
         public:
             APiece(Color color, int x, int y);
             ~APiece();
+            virtual std::tuple<int, int> findKing(std::vector<std::vector<IPiece *>> map) override;
             virtual void move(std::vector<int>) override;
             virtual Color getColor() override;
             virtual Type getType() override;
             virtual int getNbMovements() override;
+            virtual bool checkMovement(std::tuple<int, int>, Chessboard* chessboard) override;
+            virtual std::tuple<int, int> getPos() override;
 
         protected:
             int _x;

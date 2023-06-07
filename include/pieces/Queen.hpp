@@ -16,7 +16,7 @@ namespace EChess
         public:
             Queen(Color color, int x, int y);
             ~Queen();
-
+            std::vector<std::tuple<int, int>> getMovements(Chessboard* chessboard);
         protected:
         private:
     };
