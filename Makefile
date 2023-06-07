@@ -12,7 +12,8 @@ OBJ =  $(SRC:.cpp=.o)
 
 IFLAGS = -I./include
 
-CXXFLAGS += -std=c++20 -fpic -Wall -Wextra -Werror $(IFLAGS)
+CXXFLAGS += $(shell pkg-config --cflags Qt5Widgets) $(shell pkg-config --libs Qt5Widgets) \
+	-lpthread -std=c++20 -fpic -Wall -Wextra -Werror $(IFLAGS)
 
 NAME = EpiChess
 
