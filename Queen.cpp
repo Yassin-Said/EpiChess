@@ -2,26 +2,31 @@
 ** EPITECH PROJECT, 2023
 ** EpiChess
 ** File description:
-** Bishop
+** Queen
 */
 
-#include "pieces/Bishop.hpp"
-#include "pieces/King.hpp"
-#include <iostream>
+#include "Queen.hpp"
+#include "King.hpp"
+#include "iostream"
 
-EChess::Bishop::Bishop(Color color, int x, int y) : APiece(color, x, y)
+EChess::Queen::Queen(Color color, int x, int y) : APiece(color, x, y)
+{
+    if (_color == ::White)
+        _path = "/home/fmarcolo/Documents/EpiChess2/Queen.png";
+    else
+        _path = "/home/fmarcolo/Documents/EpiChess2/BQueen.png";
+}
+
+EChess::Queen::~Queen()
 {
 }
 
-EChess::Bishop::~Bishop()
+std::vector<std::tuple<int, int>> EChess::Queen::getMovements(Chessboard* chessboard)
 {
-}
-
-std::vector<std::tuple<int, int>> EChess::Bishop::getMovements(Chessboard *chessboard)
-{
-    std::vector<std::vector<int>> dir = {{1, -1}, {1, 1}, {-1, 1}, {-1, -1}};
     std::vector<std::tuple<int, int>> res;
-    for (int i = 0; i != 4; i++) {
+    std::vector<std::vector<int>> dir = {{1, -1}, {1, 1}, {-1, 1}, {-1, -1}, {-1, 0}, {1, 0}, {0, -1}, {0, 1}};
+
+    for (int i = 0; i < 8; i++) {
         int temp_x = _x + dir.at(i).at(0);
         int temp_y = _y + dir.at(i).at(1);
         while (chessboard->inRange(temp_x, temp_y) && !chessboard->getMap().at(temp_x).at(temp_y)) {
@@ -37,5 +42,5 @@ std::vector<std::tuple<int, int>> EChess::Bishop::getMovements(Chessboard *chess
             res.push_back(std::make_tuple(temp_x, temp_y));
         }
     }
-    return (res);
+    return res;
 }

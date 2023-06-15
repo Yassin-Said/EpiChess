@@ -2,21 +2,28 @@
 ** EPITECH PROJECT, 2023
 ** EpiChess
 ** File description:
-** King
+** Knight
 */
 
-#include "pieces/King.hpp"
+#include "Knight.hpp"
+#include "King.hpp"
 
-EChess::King::King(Color color, int x, int y) : APiece(color, x, y)
+EChess::Knight::Knight(Color color, int x, int y) : APiece(color, x, y)
+{
+    if (_color == ::White)
+        _path = "/home/fmarcolo/Documents/EpiChess2/Knight.png";
+    else
+        _path = "/home/fmarcolo/Documents/EpiChess2/BKnight.png";
+}
+
+EChess::Knight::~Knight()
 {
 }
 
-EChess::King::~King()
+std::vector<std::tuple<int, int>> EChess::Knight::getMovements(Chessboard *chessboard)
 {
-}
-
-std::vector<std::tuple<int, int>> EChess::King::getMovements(Chessboard *chessboard) {
-    std::vector<std::vector<int>> dir = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {1, -1}, {1, 1}, {-1, 1}, {-1, -1}};
+    std::vector<std::vector<int>> dir = {{1, -2}, {1, 2}, {-1, -2}, {-1, 2},
+        {2, -1}, {2, 1}, {-2, -1}, {-2, 1}};
     std::vector<std::tuple<int, int>> res;
     for (int i = 0; i != 8; i++) {
         int temp_x = _x + dir.at(i).at(0);
@@ -30,16 +37,8 @@ std::vector<std::tuple<int, int>> EChess::King::getMovements(Chessboard *chessbo
                 dynamic_cast<EChess::King *>(chessboard->getMap().at(temp_x).at(temp_y))->setCheck();
                 continue;
             }
-            res.push_back(std::make_tuple(temp_x, temp_y));
+        res.push_back(std::make_tuple(temp_x, temp_y));
         }
     }
-    return res;
-}
-
-void EChess::King::setCheck() {
-    _check = true;
-}
-
-bool EChess::King::inCheck() {
-    return _check;
+    return (res);
 }

@@ -23,8 +23,11 @@ namespace EChess
             virtual int getNbMovements() override;
             virtual bool checkMovement(std::tuple<int, int>, Chessboard* chessboard) override;
             virtual std::tuple<int, int> getPos() override;
+            virtual void setPos(int x, int y) override;
+            virtual std::string getPath() override {return _path;}
 
         protected:
+            std::string _path;
             int _x;
             int _y;
             Color _color;

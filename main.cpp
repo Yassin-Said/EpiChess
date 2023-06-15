@@ -1,50 +1,72 @@
-/*
-** EPITECH PROJECT, 2023
-** EpiChess
-** File description:
-** main
-*/
+#include "mainwindow.h"
 
-#include <iostream>
 #include <QApplication>
-#include <QGraphicsScene>
-#include "Rect.hpp"
-#include <QGraphicsView>
+#include "IPiece.hpp"
+#include "Chessboard.hpp"
+#include "Bishop.hpp"
+#include "Tower.hpp"
+#include "Pawn.hpp"
+#include "King.hpp"
+#include "Knight.hpp"
+#include "Queen.hpp"
 
-int main (int ac, char **av)
+int main(int argc, char *argv[])
 {
+    QApplication a(argc, argv);
+    EChess::Chessboard *chess2 = new EChess::Chessboard;
 
-
-
-    QApplication app(ac, av);
-
-    QGraphicsScene *scene = new QGraphicsScene();
-
-    Rect rect;
-    rect.setRect(0, 0, 100, 100);
-    rect.setBrush(Qt::white);
-
-    scene->addItem(&rect);
-    QGraphicsView *view = new QGraphicsView(scene);
-    view->show();
-    return app.exec();
-}
-/*
-
-#include "pieces/IPiece.hpp"
-#include "pieces/King.hpp"
-#include "pieces/Bishop.hpp"
-#include "pieces/Chessboard.hpp"
-#include <iostream>
-
-int main ()
-{
-    EChess::Chessboard *chess = new EChess::Chessboard;
-    EChess::IPiece *king = new EChess::Bishop(Black, 2, 2);
-    chess->addPiece(king);
-    std::vector<std::tuple<int, int>> res = king->getMovements(chess);
-    for (size_t i = 0; i < res.size(); i++) {
-        std::cout << std::get<0>(res.at(i)) << " " << std::get<1>(res.at(i)) << std::endl;
+//    EChess::IPiece *Tower4 = new EChess::Tower(Black, 4, 4);
+//    chess2->addPiece(Tower4);
+//    EChess::IPiece *Bishop4 = new EChess::Bishop(White, 4, 5);
+//    chess2->addPiece(Bishop4);
+//    EChess::IPiece *pawn = new EChess::Pawn(Black, 5, 2);
+//    chess2->addPiece(pawn);
+//    EChess::IPiece *pawn2 = new EChess::Pawn(White, 6, 1);
+//    chess2->addPiece(pawn2);
+//    EChess::IPiece *king = new EChess::King(White, 5, 4);
+//    chess2->addPiece(king);
+//    EChess::IPiece *knight = new EChess::Knight(Black, 6, 4);
+//    chess2->addPiece(knight);
+//    EChess::IPiece *queen = new EChess::Queen(White, 5, 5);
+//    chess2->addPiece(queen);
+//    EChess::IPiece *king2 = new EChess::King(Black, 2, 2);
+//    chess2->addPiece(king2);
+    for (int i = 0; i < 8; i++) {
+        EChess::IPiece *bpawn = new EChess::Pawn(Black, i, 1);
+        chess2->addPiece(bpawn);
+        EChess::IPiece *pawn = new EChess::Pawn(White, i, 6);
+        chess2->addPiece(pawn);
     }
-    return 0;
-}*/
+    EChess::IPiece *btower = new EChess::Tower(Black, 0, 0);
+    chess2->addPiece(btower);
+    EChess::IPiece *btower2 = new EChess::Tower(Black, 7, 0);
+    chess2->addPiece(btower2);
+    EChess::IPiece *tower = new EChess::Tower(White, 0, 7);
+    chess2->addPiece(tower);
+    EChess::IPiece *tower2 = new EChess::Tower(White, 7, 7);
+    chess2->addPiece(tower2);
+
+    EChess::IPiece *bknight = new EChess::Knight(Black, 1, 0);
+    chess2->addPiece(bknight);
+    EChess::IPiece *bknight2 = new EChess::Knight(Black, 6, 0);
+    chess2->addPiece(bknight2);
+    EChess::IPiece *knight = new EChess::Knight(White, 1, 7);
+    chess2->addPiece(knight);
+    EChess::IPiece *knight2 = new EChess::Knight(White, 6, 7);
+    chess2->addPiece(knight2);
+
+    EChess::IPiece *bbishop = new EChess::Bishop(Black, 2, 0);
+    chess2->addPiece(bbishop);
+    EChess::IPiece *bbishop2 = new EChess::Bishop(Black, 5, 0);
+    chess2->addPiece(bbishop2);
+    EChess::IPiece *bishop = new EChess::Bishop(White, 2, 7);
+    chess2->addPiece(bishop);
+    EChess::IPiece *bishop2 = new EChess::Bishop(White, 5, 7);
+    chess2->addPiece(bishop2);
+
+    MainWindow w(chess2);
+
+
+    w.show();
+    return a.exec();
+}

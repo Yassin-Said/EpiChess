@@ -5,10 +5,15 @@
 ** Tower
 */
 
-#include "pieces/Tower.hpp"
+#include "Tower.hpp"
+#include "King.hpp"
 
 EChess::Tower::Tower(Color color, int x, int y) : APiece(color, x, y)
 {
+    if (_color == ::White)
+        _path = "/home/fmarcolo/Documents/EpiChess2/Tower.png";
+    else
+        _path = "/home/fmarcolo/Documents/EpiChess2/BTower.png";
 }
 
 
@@ -19,6 +24,7 @@ EChess::Tower::~Tower()
 std::vector<std::tuple<int, int>> EChess::Tower::getMovements(Chessboard* chessboard)
 {
     std::vector<std::tuple<int, int>> res;
+    bool king = false;
 
     int directions[4][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}};
 
@@ -33,9 +39,11 @@ std::vector<std::tuple<int, int>> EChess::Tower::getMovements(Chessboard* chessb
                 res.push_back(std::make_tuple(newX, newY));
             else {
                 if (chessboard->getMap().at(newX).at(newY)->getColor() != _color) {
+                    if (chessboard->getMap().at(newX).at(newY)->getType() == ::King) {
+                        king = true;
+                        break;
+                    }
                     res.push_back(std::make_tuple(newX, newY));
-                    if (chessboard->getMap().at(newX + 1).at(newY)->getType() == ::King) {}
-                        // dynamic_cast<EChess::King*>(chessboard->getMap().at(newX + 1).at(newY))->setCheck();
                 }
                 break;
             }

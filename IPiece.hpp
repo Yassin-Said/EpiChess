@@ -10,6 +10,8 @@
     #include <tuple>
     #include <vector>
     #include "Chessboard.hpp"
+    #include <string>
+
 
 enum Color {
     White,
@@ -40,6 +42,8 @@ namespace EChess
             virtual Color getColor() = 0;
             virtual Type getType() = 0;
             virtual std::tuple<int, int> getPos() = 0;
+            virtual void setPos(int x, int y) = 0;
+            virtual std::string getPath() = 0;
 
         protected:
         private:

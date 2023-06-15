@@ -5,11 +5,15 @@
 ** Pawn
 */
 
-#include "pieces/Pawn.hpp"
-#include "pieces/King.hpp"
+#include "Pawn.hpp"
+#include "King.hpp"
 
 EChess::Pawn::Pawn(Color color, int x, int y) : APiece(color, x, y)
 {
+    if (_color == ::White)
+        _path = "/home/fmarcolo/Documents/EpiChess2/Pawn.png";
+    else
+        _path = "/home/fmarcolo/Documents/EpiChess2/BPawn.png";
 }
 
 EChess::Pawn::~Pawn()
@@ -20,7 +24,6 @@ EChess::Pawn::~Pawn()
 // {
 //     std::vector<std::tuple<int, int>> res;
 //     int incr = 0;
-
 //     if (_color == Black)
 //         incr = -1;
 //     else
@@ -51,7 +54,7 @@ std::vector<std::tuple<int, int>> EChess::Pawn::getMovements(Chessboard* chessbo
         incr = 1;
     std::size_t newX = _x;
     std::size_t newY = _y + incr;
-    if (chessboard->getMap().at(newX).at(newY) == nullptr) {
+    if (chessboard->inRange(newX, newY) && chessboard->getMap().at(newX).at(newY) == nullptr) {
         res.push_back(std::make_tuple(newX, newY));
         if (getNbMovements() == 0 && chessboard->getMap().at(newX).at(newY + incr) == nullptr)
             res.push_back(std::make_tuple(newX, newY + incr));

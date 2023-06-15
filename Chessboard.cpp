@@ -5,7 +5,7 @@
 ** Chessboard
 */
 #include <iostream>
-#include "pieces/Chessboard.hpp"
+#include "Chessboard.hpp"
 
 EChess::Chessboard::Chessboard()
 {
@@ -36,4 +36,17 @@ void EChess::Chessboard::addPiece(IPiece *piece)
     std::tuple<int, int> pos = piece->getPos();
     if (inRange(std::get<0>(pos), std::get<1>(pos)))
         _map.at(std::get<0>(pos)).at(std::get<1>(pos)) = piece;
+}
+
+void EChess::Chessboard::delPiece(int x, int y)
+{
+    _map.at(x).at(y) = nullptr;
+}
+
+void EChess::Chessboard::erasePiece(int x, int y)
+{
+    if (_map.at(x).at(y)) {
+//        delete(_map.at(x).at(y));
+        _map.at(x).at(y) = nullptr;
+    }
 }
