@@ -44,11 +44,15 @@ void EChess::APiece::setPos(int x, int y)
     _y = y;
 }
 
+void EChess::APiece::addMovement()
+{
+    _mvts++;
+}
+
 bool EChess::APiece::checkMovement(std::tuple<int, int> pos, Chessboard* chessboard)
 {
     std::vector<std::vector<IPiece *>> savemap = chessboard->getMap();
     std::vector<std::vector<IPiece *>> map = chessboard->getMap();
-
     int memox = _x;
     int memoy = _y;
 

@@ -39,6 +39,7 @@ namespace EChess
             virtual bool checkMovement(std::tuple<int, int>, Chessboard* chessboard) = 0;
             virtual void move(std::vector<int>) = 0;
             virtual int getNbMovements() = 0;
+            virtual void addMovement() = 0;
             virtual Color getColor() = 0;
             virtual Type getType() = 0;
             virtual std::tuple<int, int> getPos() = 0;

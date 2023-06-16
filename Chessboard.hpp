@@ -22,6 +22,7 @@ namespace EChess
             void setMap(std::vector<std::vector<IPiece *>>);
             void addPiece(IPiece *);
             bool inRange(int, int);
+            IPiece *getPiece(int x, int y);
             void delPiece(int x, int y);
             void erasePiece(int x, int y);
         private:

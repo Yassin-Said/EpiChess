@@ -31,6 +31,11 @@ void EChess::Chessboard::setMap(std::vector<std::vector<EChess::IPiece *>> map)
     this->_map = map;
 }
 
+EChess::IPiece *EChess::Chessboard::getPiece(int x, int y)
+{
+    return _map.at(x).at(y);
+}
+
 void EChess::Chessboard::addPiece(IPiece *piece)
 {
     std::tuple<int, int> pos = piece->getPos();
@@ -45,8 +50,6 @@ void EChess::Chessboard::delPiece(int x, int y)
 
 void EChess::Chessboard::erasePiece(int x, int y)
 {
-    if (_map.at(x).at(y)) {
-//        delete(_map.at(x).at(y));
+    if (_map.at(x).at(y))
         _map.at(x).at(y) = nullptr;
-    }
 }

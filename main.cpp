@@ -14,23 +14,6 @@ int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     EChess::Chessboard *chess2 = new EChess::Chessboard;
-
-//    EChess::IPiece *Tower4 = new EChess::Tower(Black, 4, 4);
-//    chess2->addPiece(Tower4);
-//    EChess::IPiece *Bishop4 = new EChess::Bishop(White, 4, 5);
-//    chess2->addPiece(Bishop4);
-//    EChess::IPiece *pawn = new EChess::Pawn(Black, 5, 2);
-//    chess2->addPiece(pawn);
-//    EChess::IPiece *pawn2 = new EChess::Pawn(White, 6, 1);
-//    chess2->addPiece(pawn2);
-//    EChess::IPiece *king = new EChess::King(White, 5, 4);
-//    chess2->addPiece(king);
-//    EChess::IPiece *knight = new EChess::Knight(Black, 6, 4);
-//    chess2->addPiece(knight);
-//    EChess::IPiece *queen = new EChess::Queen(White, 5, 5);
-//    chess2->addPiece(queen);
-//    EChess::IPiece *king2 = new EChess::King(Black, 2, 2);
-//    chess2->addPiece(king2);
     for (int i = 0; i < 8; i++) {
         EChess::IPiece *bpawn = new EChess::Pawn(Black, i, 1);
         chess2->addPiece(bpawn);
@@ -64,8 +47,16 @@ int main(int argc, char *argv[])
     EChess::IPiece *bishop2 = new EChess::Bishop(White, 5, 7);
     chess2->addPiece(bishop2);
 
-    MainWindow w(chess2);
+    EChess::IPiece *bking = new EChess::King(Black, 4, 0);
+    chess2->addPiece(bking);
+    EChess::IPiece *king = new EChess::King(White, 4, 7);
+    chess2->addPiece(king);
+    EChess::IPiece *bqueen = new EChess::Queen(Black, 3, 0);
+    chess2->addPiece(bqueen);
+    EChess::IPiece *queen = new EChess::Queen(White, 3, 7);
+    chess2->addPiece(queen);
 
+    MainWindow w(chess2);
 
     w.show();
     return a.exec();

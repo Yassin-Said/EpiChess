@@ -7,7 +7,7 @@
 
 #include "Tower.hpp"
 #include "King.hpp"
-
+#include "iostream"
 EChess::Tower::Tower(Color color, int x, int y) : APiece(color, x, y)
 {
     if (_color == ::White)
@@ -40,6 +40,7 @@ std::vector<std::tuple<int, int>> EChess::Tower::getMovements(Chessboard* chessb
             else {
                 if (chessboard->getMap().at(newX).at(newY)->getColor() != _color) {
                     if (chessboard->getMap().at(newX).at(newY)->getType() == ::King) {
+                        dynamic_cast<EChess::King *>(chessboard->getMap().at(newX).at(newY))->setCheck();
                         king = true;
                         break;
                     }

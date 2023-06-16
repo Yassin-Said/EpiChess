@@ -33,6 +33,8 @@ private:
     EChess::IPiece *_memopiece;
     void drawIcon();
     std::vector<std::tuple<int,int>>_mvts;
+    std::vector<std::tuple<int, int, int, int>>_cstl;
+    bool rookMove(int i, int x, int y);
     bool movePiece(int i, int x, int y);
     Color player = White;
 

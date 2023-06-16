@@ -25,6 +25,7 @@ namespace EChess
             virtual std::tuple<int, int> getPos() override;
             virtual void setPos(int x, int y) override;
             virtual std::string getPath() override {return _path;}
+            virtual void addMovement() override;
 
         protected:
             std::string _path;

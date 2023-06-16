@@ -16,6 +16,7 @@ namespace EChess
         public:
             King(Color color, int x, int y);
             ~King();
+            std::vector<std::tuple<int, int, int, int>> castling(Chessboard *chessboard);
             std::vector<std::tuple<int, int>> getMovements(Chessboard *chessboard);
             void setCheck();
             bool inCheck();
